@@ -1,11 +1,13 @@
 package com.capgemini.set.schaaktoernooi.Schaaktoernooi.Model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 @Entity
 public class Schaker {
@@ -15,9 +17,11 @@ public class Schaker {
     private long schaakID;
 
     private String voornaam;
-    private String achternaam;
     private String tussenvoegsel;
-    private LocalDate Geboortedatum;
+    private String achternaam;
+
+    private LocalDate geboortedatum;
+
     private int gewonnenPartijen;
     private int remises;
     private int verlorenPartijen;
@@ -30,7 +34,7 @@ public class Schaker {
         this.voornaam = voornaam;
         this.achternaam = achternaam;
         this.tussenvoegsel = tussenvoegsel;
-        Geboortedatum = geboortedatum;
+        this.geboortedatum = geboortedatum;
     }
 
     public String getVoornaam() {
@@ -58,14 +62,19 @@ public class Schaker {
     }
 
     public LocalDate getGeboortedatum() {
-        return Geboortedatum;
+        return geboortedatum;
     }
 
-    public void setGeboortedatum(LocalDate geboortedatum) throws NoTransAgeismAllowedException {
-        if(voornaam.equalsIgnoreCase("Emile") && achternaam.equalsIgnoreCase("Ratelband")) {
-            Geboortedatum = geboortedatum.plusYears(20);
-        }
-        else throw new NoTransAgeismAllowedException();
+//    public void setGeboortedatum(LocalDate geboortedatum) throws NoTransAgeismAllowedException {
+//        if(voornaam.equalsIgnoreCase("Emile") && achternaam.equalsIgnoreCase("Ratelband")) {
+//            geboortedatum = geboortedatum.plusYears(20);
+//        }
+//        else throw new NoTransAgeismAllowedException();
+//    }
+
+    public void setGeboortedatum(LocalDate geboortedatum)
+    {
+        this.geboortedatum = geboortedatum;
     }
 
     public int getGewonnenPartijen() {
@@ -90,5 +99,19 @@ public class Schaker {
 
     public void setVerlorenPartijen(int verlorenPartijen) {
         this.verlorenPartijen = verlorenPartijen;
+    }
+
+    @Override
+    public String toString() {
+        return "Schaker{" +
+                "schaakID=" + schaakID +
+                ", voornaam='" + voornaam + '\'' +
+                ", achternaam='" + achternaam + '\'' +
+                ", tussenvoegsel='" + tussenvoegsel + '\'' +
+                ", geboortedatum=" + geboortedatum +
+                ", gewonnenPartijen=" + gewonnenPartijen +
+                ", remises=" + remises +
+                ", verlorenPartijen=" + verlorenPartijen +
+                '}';
     }
 }

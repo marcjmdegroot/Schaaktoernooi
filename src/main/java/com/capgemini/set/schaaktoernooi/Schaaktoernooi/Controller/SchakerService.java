@@ -16,9 +16,9 @@ public class SchakerService {
         return schakerrepository.findById(id).get();
     }
 
-    public Schaker save(Schaker Schaker)
+    public Schaker save(Schaker schaker)
     {
-        return schakerrepository.save(Schaker);
+        return schakerrepository.save(schaker);
     }
 
     public Iterable<Schaker> findAll() {
