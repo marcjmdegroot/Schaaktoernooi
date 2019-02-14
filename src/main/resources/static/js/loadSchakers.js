@@ -24,6 +24,7 @@ function loadSchakers()
                     htmlschakers += '<td>' + value.gewonnenPartijen + '</td>';
                     htmlschakers += '<td>' + value.remises + '</td>';
                     htmlschakers += '<td>' + value.verlorenPartijen + '</td>';
+                    htmlschakers += '<td><button onclick="javascript: deleteSchaker('+value.schaakID+')">delete</button></td>';
 
                     htmlschakers += '</tr>';
                  })

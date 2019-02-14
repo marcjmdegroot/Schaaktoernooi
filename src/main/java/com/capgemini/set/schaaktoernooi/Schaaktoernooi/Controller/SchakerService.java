@@ -24,4 +24,9 @@ public class SchakerService {
     public Iterable<Schaker> findAll() {
         return schakerrepository.findAll();
     }
+
+    public void deleteSchaker(long schakerID)
+    {
+        schakerrepository.deleteById(schakerID);
+    }
 }

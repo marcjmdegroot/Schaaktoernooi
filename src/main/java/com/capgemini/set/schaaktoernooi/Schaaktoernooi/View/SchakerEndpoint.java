@@ -12,16 +12,16 @@ import java.time.LocalDate;
 public class SchakerEndpoint {
 
     @Autowired
-    private SchakerService SchakerService;
+    private SchakerService schakerService;
 
     @GetMapping("/all")
     public Iterable<Schaker> listSchakeres(){
-        return SchakerService.findAll();
+        return schakerService.findAll();
     }
 
     @PostMapping(value = "/add", consumes = "application/json")
     public void addSchaker(@RequestBody Schaker schaker){
-        SchakerService.save(schaker);
+        schakerService.save(schaker);
     }
 
     @GetMapping("/test")
@@ -29,13 +29,18 @@ public class SchakerEndpoint {
     {
         Schaker testschaker = new Schaker("Henk","Gecken","van", LocalDate.of(2019,2,13));
 
-        SchakerService.save(testschaker);
+        schakerService.save(testschaker);
     }
 
-    @GetMapping("/schaker")
-    public Schaker findSchakerByID(@RequestParam long consumableID)
+    @GetMapping("/{schaakId}")
+    public Schaker findSchakerByID(@PathVariable String schaakId)
     {
-        return SchakerService.findByID(consumableID);
+        return schakerService.findByID(Long.valueOf(schaakId));
     }
 
+    @PostMapping("/delete")
+    public void deleteSchaker(@RequestBody String schaakId)
+    {
+        schakerService.deleteSchaker(Long.valueOf(schaakId));
+    }
 }

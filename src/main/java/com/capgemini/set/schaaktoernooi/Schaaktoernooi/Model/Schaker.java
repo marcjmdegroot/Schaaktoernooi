@@ -22,6 +22,7 @@ public class Schaker {
 
     private LocalDate geboortedatum;
 
+    private int gespeeldePartijen;
     private int gewonnenPartijen;
     private int remises;
     private int verlorenPartijen;
@@ -77,12 +78,17 @@ public class Schaker {
         this.geboortedatum = geboortedatum;
     }
 
+    public int getGespeeldePartijen() {
+        return gespeeldePartijen;
+    }
+
     public int getGewonnenPartijen() {
         return gewonnenPartijen;
     }
 
     public void setGewonnenPartijen(int gewonnenPartijen) {
         this.gewonnenPartijen = gewonnenPartijen;
+        updateGespeeldePartijen();
     }
 
     public int getRemises() {
@@ -91,6 +97,7 @@ public class Schaker {
 
     public void setRemises(int remises) {
         this.remises = remises;
+        updateGespeeldePartijen();
     }
 
     public int getVerlorenPartijen() {
@@ -99,11 +106,18 @@ public class Schaker {
 
     public void setVerlorenPartijen(int verlorenPartijen) {
         this.verlorenPartijen = verlorenPartijen;
+        updateGespeeldePartijen();
     }
 
     public long getSchaakID() {
         return schaakID;
     }
+
+    public void updateGespeeldePartijen()
+    {
+        gespeeldePartijen = verlorenPartijen + remises + gewonnenPartijen;
+    }
+
 
     @Override
     public String toString() {
