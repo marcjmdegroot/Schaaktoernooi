@@ -101,6 +101,10 @@ public class Schaker {
         this.verlorenPartijen = verlorenPartijen;
     }
 
+    public long getSchaakID() {
+        return schaakID;
+    }
+
     @Override
     public String toString() {
         return "Schaker{" +
