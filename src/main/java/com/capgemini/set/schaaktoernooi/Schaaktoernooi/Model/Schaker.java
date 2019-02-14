@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
@@ -16,7 +17,7 @@ public class Schaker {
     private String voornaam;
     private String achternaam;
     private String tussenvoegsel;
-    private LocalDateTime Geboortedatum;
+    private LocalDate Geboortedatum;
     private int gewonnenPartijen;
     private int remises;
     private int verlorenPartijen;
@@ -25,7 +26,7 @@ public class Schaker {
     private Schaker()
     { }
 
-    public Schaker(String voornaam, String achternaam, String tussenvoegsel, LocalDateTime geboortedatum) {
+    public Schaker(String voornaam, String achternaam, String tussenvoegsel, LocalDate geboortedatum) {
         this.voornaam = voornaam;
         this.achternaam = achternaam;
         this.tussenvoegsel = tussenvoegsel;
@@ -56,11 +57,11 @@ public class Schaker {
         this.tussenvoegsel = tussenvoegsel;
     }
 
-    public LocalDateTime getGeboortedatum() {
+    public LocalDate getGeboortedatum() {
         return Geboortedatum;
     }
 
-    public void setGeboortedatum(LocalDateTime geboortedatum) throws NoTransAgeismAllowedException {
+    public void setGeboortedatum(LocalDate geboortedatum) throws NoTransAgeismAllowedException {
         if(voornaam.equalsIgnoreCase("Emile") && achternaam.equalsIgnoreCase("Ratelband")) {
             Geboortedatum = geboortedatum.plusYears(20);
         }
