@@ -38,8 +38,8 @@ public class SchakerEndpoint {
         return schakerService.findByID(Long.valueOf(schaakId));
     }
 
-    @PostMapping("/delete")
-    public void deleteSchaker(@RequestBody String schaakId)
+    @GetMapping("/delete/{schaakId}")
+    public void deleteSchaker(@PathVariable String schaakId)
     {
         schakerService.deleteSchaker(Long.valueOf(schaakId));
     }
