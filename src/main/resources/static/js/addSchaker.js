@@ -8,8 +8,6 @@ $.ajax({
     data: schakerJSONString,
     dataType:'json'
     });
-    console.log(schakerJSONString);
-    alert('');
 }
 
 function formToJSON()
@@ -32,10 +30,6 @@ function formToJSON()
     {
         jsonObject.geboortedatum = $("#geboortedatum").val();
     }
-
-    jsonObject["gewonnenPartijen"] = 0;
-    jsonObject["remises"] = 0;
-    jsonObject["verlorenPartijen"] = 0;
 
     //console.log(jsonObject);
     return jsonObject;
